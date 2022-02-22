@@ -16,13 +16,13 @@
 
 ### How to run the Tip Calculator
 
-In your Terminal:
+##### In your Terminal:
 
 1. Clone this Repo with `git clone GITHUB URL`
 2. `cd` into the Repo folder
 3. Run `python3 tip_calculator.py` or `python tip_calculator.py`
 
-Then to calculate the tip:
+##### Then to calculate the tip:
 1. This app takes user input for the cost of a meal, number of diners, and percentage user wishes to tip.
 2. This data is used to calculate the tax and tip, and those amounts are added to the total bill.
 3. If there is more than one diner, the bill is divided evenly to find how much each individual owes.
