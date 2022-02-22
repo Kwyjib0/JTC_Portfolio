@@ -49,8 +49,8 @@ while True:
     # check for non-number input that will cause an error
     try:
         # have the user input the tip value as a percentage of their total bill with tax that they would like to leave, convert the input to a float, and assign that value to the variable
-        tip_percent = float(input('What percentage would you like to tip: '))
-        if tip_percent >= 0:
+        tip_percentage = float(input('What percentage would you like to tip: '))
+        if tip_percentage >= 0:
             # quit loop if entry is valid
             break
         # code to run if number of diners is not valid
@@ -67,64 +67,57 @@ while True:
 
 
 # create a variable assigned the set 10% tax amount
-tax = .1 
+tax_rate = .1 
 
 # FUNCTIONS:
 
 # defines a function that calculates and returns the tax for the bill
-def bill_tax(bill):
+def calculate_tax(bill):
     # return the tax on the bill
-    return bill * tax
+    return bill * tax_rate
     
-# defines a funtion that calculates and returns the tip based on the percentage of bill
-def tip (bill, tip_percent):
+# defines a function that calculates and returns the tip based on the percentage of bill
+def calculate_tip (bill, tip_percentage):
     # return the calculated tip
-    return (bill * (tip_percent / 100))
+    return (bill * (tip_percentage / 100))
 
-# defines a function that calculates and returns the total bill (cost + tax + tip) rounded to two decimal places
-def total_bill(bill, tip_percent):
-    # return a value for the total bill after calling the bill_tax and tip functions, and rounding to two decimal places
-    return round(bill + bill_tax(bill) + tip(bill, tip_percent), 2)
+# defines a function that calculates and returns the total bill (cost + tax + tip)
+def calculate_total_bill(bill, tip_percentage):
+    # return a value for the total bill after calling the calculate_bill_tax and tip functions
+    return (bill + calculate_tax(bill) + calculate_tip(bill, tip_percentage))
 
-# defines a function that formats the total bill output to have comma seperators and always have two decimal places, even if the second is a zero, and outputs that amount in a print statement 
-def format_total_bill(bill, tip_percent):
-    # use the built-in format method found on https://www.kite.com/python/answers/how-to-add-commas-to-a-number-in-python
-    # creates a string variable with the value formatted with comma seperators after calling the total bill function
-    comma_total_bill = "{:,}".format(total_bill(bill, tip_percent))
-    # create a list variable by splitting comma_total_bill into two element representing the amounts before and after the decimal point
-    total_bill_list = comma_total_bill.split('.')
-    # check if the length of the second element that represents the value after the decimal point is less than two
-    if len(total_bill_list[1]) < 2:
-        # if the length of the value after the decimal point is less than two (it should be one or two), add a zero to the end
-        comma_total_bill = comma_total_bill + '0'
+# defines a function that prints & formats the total bill output to have comma seperators and two decimal places
+def format_total_bill(bill, tip_percentage):
+    # use the built-in format method found on https://pythonguides.com/python-format-number-with-commas/
+    # calls function to calculate total bill & formats that value as a numeric string with commas & rounded to 2 decimal places
+    formatted_total_bill = "{:,.2f}".format(calculate_total_bill(bill, tip_percentage))
     # print the newly formatted total bill with commas and two values after the decimal point
-    print(f'Total bill: ${comma_total_bill}')
+    print(f'Each diner should pay ${formatted_total_bill}')
 
-# defines a function that calculates the the individual's total bill including tax & tip by diviing the bill by the number of diner's and returns that value rounded to two decimal places
-def individual_bill(bill, tip_percent, number_in_party):
-    # return a value for the individual bill after calling the total bill function dividing that returned value by the number of diners and then rounding to two decimal places
-    return round((total_bill(bill, tip_percent) / number_in_party), 2)
+# defines a function that calculates the the individual's total bill including tax & tip by dividing the bill by the number of diner's
+def calculate_individual_bill(bill, tip_percent, number_in_party):
+    # return a value for the individual bill after calling the total bill function dividing that returned value by the number of diners
+    return (calculate_total_bill(bill, tip_percentage) / number_in_party)
 
-# defines a function that formats the individual bill output to have comma seperators and always have two decimal places, even if the second is a zero, and outputs that amount in a print statement  
-def format_individual_bill(bill, tip_percent, number_in_party):
-    # use the built-in format method found on https://www.kite.com/python/answers/how-to-add-commas-to-a-number-in-python
-    comma_individual_bill = "{:,}".format(individual_bill(bill, tip_percent, number_in_party))
-    individual_bill_list = comma_individual_bill.split('.')
-    if len(individual_bill_list[1]) < 2:
-        comma_individual_bill = comma_individual_bill + '0'
-    # print the the total bill amount (cost + tax + tip) for the individual rounded to two decimal 
-    print(f'Each person should pay ${comma_individual_bill}')
+# defines a function that prints & formats the individual bill output to have comma seperators and two decimal places
+def format_individual_bill(bill, tip_percentage, number_in_party):
+    # use the built-in format method found on https://pythonguides.com/python-format-number-with-commas/
+    # calls function to calculate individual bill & formats that value as a numeric string with commas & rounded to 2 decimal places
+    formatted_individual_bill = "{:,.2f}".format(calculate_individual_bill(bill, tip_percentage, number_in_party))
+
+    # print the newly formatted individual bill with commas and two values after the decimal point
+    print(f'Each person should pay ${formatted_individual_bill}')
 
 
 # FUNCTION CALLS FOR OUTPUT:
 
 # run the format_total_bill to print the total amount owed
-format_total_bill(bill, tip_percent)
+format_total_bill(bill, tip_percentage)
 
 # check if there was more than one diner to calculate amount owed by each individual
 if number_in_party > 1:
     # if more than one diner, run the individual_bill function to print the amount owed by each diner
-    format_individual_bill(bill, tip_percent, number_in_party)
+    format_individual_bill(bill, tip_percentage, number_in_party)
 
 
 
