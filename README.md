@@ -1,4 +1,4 @@
-# The Tip Calculator
+<center style='font-size: 20px'># The Tip Calculator</center>
 
 ### MVP
 
