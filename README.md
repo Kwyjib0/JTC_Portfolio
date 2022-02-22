@@ -1,4 +1,4 @@
-# <center style='font-size: 20px; align: center'>Tip Calculator</center>
+# <center style='font-size: 20px; text-align: center'>Tip Calculator</center>
 
 ### MVP
 
