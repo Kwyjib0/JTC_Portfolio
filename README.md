@@ -1,6 +1,6 @@
 # <div align="center">Tip Calculator</div>
 ---
-## Calculates total bill with tax and tip per diner.
+## Python script that calculates total bill with tax and tip per diner.
 ---
 
 ### How to run the Tip Calculator
