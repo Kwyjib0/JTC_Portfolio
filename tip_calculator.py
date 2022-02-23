@@ -34,7 +34,7 @@ while True:
             break
         # code to run if number of diners is not valid
         else:
-            # alert the user that their entry was invalid, loop will then run again
+            # alert the user that their entry was an invalid number, loop will then run again
             print("That is an invalid input. The number of diners should be more than 0. Please try again.")
             # start the while loop over again
             continue
@@ -55,7 +55,7 @@ while True:
             break
         # code to run if number of diners is not valid
         else:
-            # alert the user that their entry was invalid, loop will then run again
+            # alert the user that their entry was an invalid amount, loop will then run again
             print("That is an invalid input. The tip cannot be less than 0. Please try again.")
             # start the while loop over again
             continue       
